@@ -33,10 +33,17 @@ public class MemberService {
 ////                e.printStackTrace();
 ////            }
 ////        });
-        validateDuplicateMember(member); //증복회원 검증
+//        long start=System.currentTimeMillis();
+        try{
+            validateDuplicateMember(member); //증복회원 검증
 
-        memberRepository.save(member);
-        return member.getId();
+            memberRepository.save(member);
+            return member.getId();
+        }finally{
+//            long finish=System.currentTimeMillis();
+//            long timeMs=finish-start;
+//            System.out.println("jpin="+timeMs+"ms");
+        }
     }
 
     private void validateDuplicateMember(Member member) {
